@@ -1,0 +1,306 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		031533CF1DECD8870004C97D /* deck.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 031533C51DECD8870004C97D /* deck.cpp */; };
+		031533D01DECD8870004C97D /* hand.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 031533C71DECD8870004C97D /* hand.cpp */; };
+		031533D11DECD8870004C97D /* trade_area.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 031533C81DECD8870004C97D /* trade_area.cpp */; };
+		031533D21DECD8870004C97D /* table.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 031533CA1DECD8870004C97D /* table.cpp */; };
+		031533D31DECD8870004C97D /* discard_pile.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 031533CD1DECD8870004C97D /* discard_pile.cpp */; };
+		031533D41DECD8870004C97D /* gemstones.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 031533CE1DECD8870004C97D /* gemstones.cpp */; };
+		0354FF0D1DE23DBE001FF8CA /* cardFactory.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0354FF071DE23DBE001FF8CA /* cardFactory.cpp */; };
+		0354FF0E1DE23DBE001FF8CA /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0354FF091DE23DBE001FF8CA /* main.cpp */; };
+		0354FF0F1DE23DBE001FF8CA /* player.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0354FF0A1DE23DBE001FF8CA /* player.cpp */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		0354FEF51DE23D4E001FF8CA /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = /usr/share/man/man1/;
+			dstSubfolderSpec = 0;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 1;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		031533C21DECD8870004C97D /* gemstones.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = gemstones.h; sourceTree = "<group>"; };
+		031533C31DECD8870004C97D /* hand.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = hand.h; sourceTree = "<group>"; };
+		031533C41DECD8870004C97D /* chain.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = chain.h; sourceTree = "<group>"; };
+		031533C51DECD8870004C97D /* deck.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = deck.cpp; sourceTree = "<group>"; };
+		031533C61DECD8870004C97D /* deck.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = deck.h; sourceTree = "<group>"; };
+		031533C71DECD8870004C97D /* hand.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = hand.cpp; sourceTree = "<group>"; };
+		031533C81DECD8870004C97D /* trade_area.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = trade_area.cpp; sourceTree = "<group>"; };
+		031533C91DECD8870004C97D /* trade_area.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = trade_area.h; sourceTree = "<group>"; };
+		031533CA1DECD8870004C97D /* table.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = table.cpp; sourceTree = "<group>"; };
+		031533CB1DECD8870004C97D /* table.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = table.h; sourceTree = "<group>"; };
+		031533CC1DECD8870004C97D /* discard_pile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = discard_pile.h; sourceTree = "<group>"; };
+		031533CD1DECD8870004C97D /* discard_pile.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = discard_pile.cpp; sourceTree = "<group>"; };
+		031533CE1DECD8870004C97D /* gemstones.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = gemstones.cpp; sourceTree = "<group>"; };
+		0354FEF71DE23D4E001FF8CA /* Bohnanza */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = Bohnanza; sourceTree = BUILT_PRODUCTS_DIR; };
+		0354FF071DE23DBE001FF8CA /* cardFactory.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = cardFactory.cpp; sourceTree = "<group>"; };
+		0354FF081DE23DBE001FF8CA /* cardFactory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = cardFactory.h; sourceTree = "<group>"; };
+		0354FF091DE23DBE001FF8CA /* main.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
+		0354FF0A1DE23DBE001FF8CA /* player.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = player.cpp; sourceTree = "<group>"; };
+		0354FF0C1DE23DBE001FF8CA /* ProjectNotes.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = ProjectNotes.txt; sourceTree = "<group>"; };
+		0354FF231DE4C548001FF8CA /* player.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = player.h; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		0354FEF41DE23D4E001FF8CA /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		0354FEEE1DE23D4E001FF8CA = {
+			isa = PBXGroup;
+			children = (
+				0354FEF91DE23D4E001FF8CA /* Bohnanza */,
+				0354FEF81DE23D4E001FF8CA /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		0354FEF81DE23D4E001FF8CA /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				0354FEF71DE23D4E001FF8CA /* Bohnanza */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		0354FEF91DE23D4E001FF8CA /* Bohnanza */ = {
+			isa = PBXGroup;
+			children = (
+				0354FF0C1DE23DBE001FF8CA /* ProjectNotes.txt */,
+				0354FF091DE23DBE001FF8CA /* main.cpp */,
+				031533C21DECD8870004C97D /* gemstones.h */,
+				031533CE1DECD8870004C97D /* gemstones.cpp */,
+				031533C41DECD8870004C97D /* chain.h */,
+				031533C61DECD8870004C97D /* deck.h */,
+				031533C51DECD8870004C97D /* deck.cpp */,
+				0354FF071DE23DBE001FF8CA /* cardFactory.cpp */,
+				0354FF081DE23DBE001FF8CA /* cardFactory.h */,
+				0354FF0A1DE23DBE001FF8CA /* player.cpp */,
+				0354FF231DE4C548001FF8CA /* player.h */,
+				031533C31DECD8870004C97D /* hand.h */,
+				031533C71DECD8870004C97D /* hand.cpp */,
+				031533C91DECD8870004C97D /* trade_area.h */,
+				031533C81DECD8870004C97D /* trade_area.cpp */,
+				031533CB1DECD8870004C97D /* table.h */,
+				031533CA1DECD8870004C97D /* table.cpp */,
+				031533CC1DECD8870004C97D /* discard_pile.h */,
+				031533CD1DECD8870004C97D /* discard_pile.cpp */,
+			);
+			path = Bohnanza;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		0354FEF61DE23D4E001FF8CA /* Bohnanza */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 0354FEFE1DE23D4E001FF8CA /* Build configuration list for PBXNativeTarget "Bohnanza" */;
+			buildPhases = (
+				0354FEF31DE23D4E001FF8CA /* Sources */,
+				0354FEF41DE23D4E001FF8CA /* Frameworks */,
+				0354FEF51DE23D4E001FF8CA /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Bohnanza;
+			productName = Bohnanza;
+			productReference = 0354FEF71DE23D4E001FF8CA /* Bohnanza */;
+			productType = "com.apple.product-type.tool";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		0354FEEF1DE23D4E001FF8CA /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0810;
+				ORGANIZATIONNAME = "Leisha Burford";
+				TargetAttributes = {
+					0354FEF61DE23D4E001FF8CA = {
+						CreatedOnToolsVersion = 8.1;
+						ProvisioningStyle = Automatic;
+					};
+				};
+			};
+			buildConfigurationList = 0354FEF21DE23D4E001FF8CA /* Build configuration list for PBXProject "Bohnanza" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 0354FEEE1DE23D4E001FF8CA;
+			productRefGroup = 0354FEF81DE23D4E001FF8CA /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				0354FEF61DE23D4E001FF8CA /* Bohnanza */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXSourcesBuildPhase section */
+		0354FEF31DE23D4E001FF8CA /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				031533CF1DECD8870004C97D /* deck.cpp in Sources */,
+				0354FF0F1DE23DBE001FF8CA /* player.cpp in Sources */,
+				0354FF0D1DE23DBE001FF8CA /* cardFactory.cpp in Sources */,
+				031533D21DECD8870004C97D /* table.cpp in Sources */,
+				031533D31DECD8870004C97D /* discard_pile.cpp in Sources */,
+				031533D41DECD8870004C97D /* gemstones.cpp in Sources */,
+				031533D01DECD8870004C97D /* hand.cpp in Sources */,
+				0354FF0E1DE23DBE001FF8CA /* main.cpp in Sources */,
+				031533D11DECD8870004C97D /* trade_area.cpp in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		0354FEFC1DE23D4E001FF8CA /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVES = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "-";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.12;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		0354FEFD1DE23D4E001FF8CA /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVES = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "-";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.12;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+		0354FEFF1DE23D4E001FF8CA /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		0354FF001DE23D4E001FF8CA /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		0354FEF21DE23D4E001FF8CA /* Build configuration list for PBXProject "Bohnanza" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				0354FEFC1DE23D4E001FF8CA /* Debug */,
+				0354FEFD1DE23D4E001FF8CA /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		0354FEFE1DE23D4E001FF8CA /* Build configuration list for PBXNativeTarget "Bohnanza" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				0354FEFF1DE23D4E001FF8CA /* Debug */,
+				0354FF001DE23D4E001FF8CA /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 0354FEEF1DE23D4E001FF8CA /* Project object */;
+}
