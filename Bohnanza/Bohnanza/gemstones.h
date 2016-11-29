@@ -14,6 +14,9 @@ using std::ostream;
 class Card {
     friend ostream &operator<<(ostream& out, const Card& card);
 public:
+    Card() {}
+    Card(const Card&) = delete;
+    void operator=(const Card&) = delete;
     virtual int getCardsPerCoin(int coins) = 0;
     virtual string getName() const = 0;
     virtual void print(const ostream& out) const = 0;

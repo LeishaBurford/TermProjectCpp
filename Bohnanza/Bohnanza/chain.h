@@ -10,7 +10,7 @@ class Chain_Base {
   //  friend std::ostream &operator<<(std::ostream& out, const Chain_Base& chain_base);
 public:
     virtual int sell() = 0;
-    virtual Chain_Base& operator+=(Card*);
+    virtual Chain_Base& operator+=(Card*) =0;
 };
 
 template <class T>
