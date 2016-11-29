@@ -6,7 +6,12 @@
 #include <typeinfo>
 #include "cardfactory.h"
 
-class Chain_Base {};
+class Chain_Base {
+  //  friend std::ostream &operator<<(std::ostream& out, const Chain_Base& chain_base);
+public:
+    virtual int sell() = 0;
+    virtual Chain_Base& operator+=(Card*);
+};
 
 template <class T>
 class Chain : public Chain_Base {
@@ -16,8 +21,8 @@ public:
     Chain<T>() = default;
     Chain( const std::istream&, CardFactory* ){}; // TODO
     
-    // adds a card to the Chain. If the run-time type does not match the template type of the chain and exception of type IllegalType needs to be raised.
-    Chain& operator+=(T* card) {
+    // adds a card to the Chain. If the run-time type does not match the template type of the chain an exception of type IllegalType needs to be raised.
+    Chain<T>& operator+=(Card* card) {
         chain.push_back(card);
         return *this;
     }
@@ -26,7 +31,7 @@ public:
     //when called, update player num active coins
     int sell() {
         if(!chain.empty()){
-            T* card = dynamic_cast<T*>(chain.back());
+            T* card =chain.back();
             for(int coins = 4; ;coins--) {
                 int neededCards = card->getCardsPerCoin(coins);
                 if(chain.size() >= neededCards) return coins;
@@ -51,5 +56,12 @@ inline std::ostream& operator<< (std::ostream& o, const Chain<T>& _chain)
 }
 
 template class Chain<Card>;
-
+//template class Chain<Quartz>;
+//template class Chain<Hematite>;
+//template class Chain<Obsidian>;
+//template class Chain<Malachite>;
+//template class Chain<Turquoise>;
+//template class Chain<Ruby>;
+//template class Chain<Amethyst>;
+//template class Chain<Emerald>;
 #endif /* chain_h */
