@@ -6,6 +6,7 @@
 #include "cardfactory.h"
 #include "player.h"
 #include "discard_pile.h"
+#include "trade_area.h"
 
 int main() {
     CardFactory* factory = CardFactory::getFactory();
@@ -29,6 +30,7 @@ int main() {
     //*(chain1) += card;
     
     //testing DiscardPile - its working :)
+    std::cout << "DiscardPile test" << std::endl;
     DiscardPile pile;
     pile.operator+=(card);
     std::cout << pile;
@@ -36,5 +38,15 @@ int main() {
     std::cout << *card2 << std::endl;
     //std::cout << leisha;
     
-    delete factory ; 
+    //testing tradeArea
+    std::cout << "TradeArea test" << std::endl;
+    TradeArea tradeArea;
+    tradeArea.operator+=(card);
+    std::cout << tradeArea;
+    std::cout << "should be true: " << tradeArea.legal(card) << std::endl;
+    tradeArea.trade(card->getName());
+    std::cout << "should be empty: " << tradeArea<< std::endl;
+    
+    
+    delete factory ;
 }
