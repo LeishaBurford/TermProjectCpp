@@ -29,7 +29,6 @@ public:
     int getNumChains();
     int getNumCoins();
     Player& operator+=( int );
-    template<class T>
     Chain_Base& operator[](int i) {
         return getChain(i);
     }

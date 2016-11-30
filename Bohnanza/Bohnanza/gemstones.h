@@ -14,7 +14,7 @@ using std::ostream;
 class Card {
     friend ostream &operator<<(ostream& out, const Card& card);
 public:
-    Card() {}
+    Card() {};//private, friend cardfactory
     Card(const Card&) = delete;
     void operator=(const Card&) = delete;
     virtual int getCardsPerCoin(int coins) = 0;

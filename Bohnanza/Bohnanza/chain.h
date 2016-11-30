@@ -11,14 +11,20 @@ class Chain_Base {
 public:
     virtual int sell() = 0;
     virtual Chain_Base& operator+=(Card*) =0;
+    
 };
 
 template <class T>
 class Chain : public Chain_Base {
     friend std::ostream &operator<<(std::ostream& out, const Chain<T>& chain);
-    std::vector<T*> chain;
+    //std::vector<Card*> chain;
+    T* type;
 public:
-    Chain<T>() = default;
+    std::vector<Card*> chain;
+    Chain() = default;
+    //Chain<T>(string){
+    //    chain<Ruby>
+    
     Chain( const std::istream&, CardFactory* ){}; // TODO
     
     // adds a card to the Chain. If the run-time type does not match the template type of the chain an exception of type IllegalType needs to be raised.
@@ -31,7 +37,8 @@ public:
     //when called, update player num active coins
     int sell() {
         if(!chain.empty()){
-            T* card =chain.back();
+            
+            T* card =dynamic_cast<T*>(chain.back());
             for(int coins = 4; ;coins--) {
                 int neededCards = card->getCardsPerCoin(coins);
                 if(chain.size() >= neededCards) return coins;

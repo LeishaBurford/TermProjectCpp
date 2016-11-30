@@ -23,7 +23,16 @@ int main() {
     std::cout << leisha;
     //std::cout << typeid(*card).name() << std::endl;
     //testing chain, adding card to chain
-    //Chain_Base* chain1 = &(leisha.operator[]<Card>(0));
+    //Chain<Ruby> rchain =leisha.operator[]<Ruby>(0);//cast into child class
+    Chain<Ruby> rchain;
+    Card* rcard = new Ruby();
+    rchain += rcard;
+    std::cout << *rchain.chain.back();
+    //std::cout << rchain << std::endl;
+    //leisha.operator[0]<Ruby>..operator+=(card);
+    std::cout << "Leisha test\n" << leisha << std::endl;
+    //Chain_Base* chain = &(leisha.operator[]<Card>(0));
+    
     //std::cout << *chain1 << std::endl;
     //*(chain1) += *card;
     //card = deck.draw();
