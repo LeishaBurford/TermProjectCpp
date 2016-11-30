@@ -20,7 +20,7 @@ class Chain : public Chain_Base {
     //std::vector<Card*> chain;
     T* type;
 public:
-    std::vector<Card*> chain;
+    std::vector<Card*> chain; //make private after testing!
     Chain() = default;
     //Chain<T>(string){
     //    chain<Ruby>

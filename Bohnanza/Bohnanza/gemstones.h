@@ -20,7 +20,7 @@ public:
     virtual int getCardsPerCoin(int coins) = 0;
     virtual string getName() const = 0;
     virtual void print(const ostream& out) const = 0;
-    //virtual ~Card();
+    virtual ~Card(){};
 };
 
 inline std::ostream& operator<< (std::ostream& o, const Card& card)

@@ -11,6 +11,7 @@ class Player {
     friend ostream &operator<<(ostream& out, const Player& player);
     void print(const ostream& out) const;
     Chain_Base& getChain(int i){return *(chains.at(i));}
+    const Chain_Base& getChain(int i) const {return *(chains.at(i));}
     std::string name;
     int numCoins;
     Hand hand;
@@ -30,6 +31,9 @@ public:
     int getNumCoins();
     Player& operator+=( int );
     Chain_Base& operator[](int i) {
+        return getChain(i);
+    }
+    const Chain_Base& operator[](int i) const {
         return getChain(i);
     }
     void buyThirdChain();

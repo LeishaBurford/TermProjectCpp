@@ -4,9 +4,10 @@
 #include "cardFactory.h"
 #include "gemstones.h"
 #include <queue>
+#include <list>
 
 class Hand {
-    std::queue<Card*, std::vector<Card*>> hand;
+    std::queue<Card*, std::list<Card*>> hand;
    
 public:
     Hand() = default;

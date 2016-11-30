@@ -14,6 +14,11 @@ class CardFactory {
 public:
     static CardFactory* getFactory();
     Deck getDeck();
+    ~CardFactory(){
+        for(auto card : deck){
+            delete card;
+        }
+    }
 private:
     Deck deck;
     //std::vector<Card*> deck;

@@ -10,7 +10,7 @@ class Deck : public std::vector<Card*>{
 
 public:
     Deck() : std::vector<Card*>() {};
-    Card* draw(); 
+    Card* draw();
     //Deck(const istream&, CardFactory*) TODO
 };
 
