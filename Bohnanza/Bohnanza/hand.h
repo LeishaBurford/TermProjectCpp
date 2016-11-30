@@ -7,6 +7,7 @@
 #include <list>
 
 class Hand {
+    friend ostream &operator<<(ostream& out, const Hand& hand);
     std::queue<Card*, std::list<Card*>> hand;
    
 public:
@@ -16,6 +17,13 @@ public:
     Card* play();
     Card* top();
     Card* operator[](int);
+    void print(std::ostream&) const;
 };
+
+inline std::ostream& operator<< (std::ostream& o, const Hand& hand)
+{
+    hand.print(o);
+    return o;
+}
 
 #endif /* hand_h */

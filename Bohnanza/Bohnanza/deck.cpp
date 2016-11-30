@@ -4,7 +4,6 @@
 //Deck methods
 Card* Deck::draw() {
     auto toReturn = back();
-
     pop_back();
     return toReturn;
 }

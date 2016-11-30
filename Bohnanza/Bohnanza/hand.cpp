@@ -34,3 +34,14 @@ Card* Hand::operator[](int j) {
     return card;    //returns nullptr if index not in range
 }
 
+void Hand::print(std::ostream&) const {
+    std::queue<Card*, std::list<Card*>> temp(hand);
+    for(int i = 0; i < temp.size(); i++) {
+        auto card = temp.front();
+        std::cout << *card << " ";
+        temp.pop();
+    }
+    std::cout << std::endl;
+    
+}
+
