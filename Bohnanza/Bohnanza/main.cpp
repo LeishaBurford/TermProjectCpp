@@ -10,8 +10,8 @@
 
 int main() {
     /*The simplified pseudo-code of the main loop is as follows. Setup:
-     Input the names of 2 players.
-     Initialize the Deck and draw 5 cards for the Hand of each Player; or
+     Input the names of 2 players.                                          --Done
+     Initialize the Deck and draw 5 cards for the Hand of each Player; or   --Done
      Load paused game from file.
      While there are still cards on the Deck
         if pause save game to file and exit
@@ -50,33 +50,38 @@ int main() {
     std::string responses("YyNn");
     std::cout << "Let's Play Bohnanza!! \nWould you like to load a previous game?(y/n)" <<std::endl;
     std::cin >> loadGame;
-    while(responses.find(loadGame) == std::string::npos) {
+    while(responses.find(loadGame) == std::string::npos) { //true when loadGame is not in responses
         std::cout << "That's not an option, enter y or n" << std::endl;
         std::cin >> loadGame;
     }
-    
     //if user requested to load game
-    if(responses.substr(0, 3).find(loadGame) != std::string::npos){
+    if(responses.substr(0, 2).find(loadGame) != std::string::npos){
         std::cout << "Come on! You know that isn't implemented yet!" << std::endl;
         return 0;
     }
+    //initialize players
     std::string player1, player2;
     std::cout << "Player 1, enter your name: ";
     std::cin >> player1;
     std::cout << "Player 2, enter your name: ";
     std::cin >> player2;
+    //test
     std::cout << "testing name input...\n\tPlayer1: " << player1 << "\n\tPlayer2: " << player2 << "\n...end test" <<std::endl;
     std::cout << "Let the game begin!" << std::endl;
-    
+    //initialize hands and deck
     CardFactory* factory = CardFactory::getFactory();
     Hand p1;
     Hand p2;
-    //declare a deck*, fix getDeck to shuffle deck?
+    Deck deck(factory->getDeck());  //this copies deck, not ideal cannot find another way
+    
     for(int i = 0; i < 5; i++) {
-        p1 += factory->getDeck().draw();
-        p2 += factory->getDeck().draw();
+        p1 += deck.draw();
+        p2 += deck.draw();
     }
     std::cout << "testing player hands...\n\tP1: " << p1 << "\n\tP2: " << p2 << "\n...end test" <<std::endl;
-    //draw not quite working, 
+    auto card1 = p1[2];
+    auto card2 = p2[2];
+    std::cout << "testing hand subscript operator...\n\tRemoved: " << *card1 << ", P1: " << p1 << std::endl;
+    std::cout <<"\tRemoved: " << *card2 << ", P2: " << p2 << "\n...end test" <<std::endl;
     delete factory;
 }

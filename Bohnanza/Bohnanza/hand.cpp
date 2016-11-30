@@ -25,23 +25,26 @@ Card* Hand::top() {
 //add handler for index out of bounds
 Card* Hand::operator[](int j) {
     Card* card = nullptr;
-    for(int i = 0; i < hand.size(); i++) {
+    std::queue<Card*, std::list<Card*>> temp;
+    int handSize = (int)hand.size();
+    for(int i = 0; i < handSize; i++) {
         if(i == j){         // this is the card to remove
             card = play();   // card is now pointing to indexed value, to be returned.
                             // card is removed from queue
+        }else {
+            temp.push(play());    //card not to be removed, put in temp
         }
     }
+    hand = temp;
     return card;    //returns nullptr if index not in range
 }
 
 void Hand::print(std::ostream&) const {
     std::queue<Card*, std::list<Card*>> temp(hand);
-    for(int i = 0; i < temp.size(); i++) {
+    for(int i = 0; i < hand.size(); i++) {
         auto card = temp.front();
         std::cout << *card << " ";
         temp.pop();
     }
-    std::cout << std::endl;
-    
 }
 

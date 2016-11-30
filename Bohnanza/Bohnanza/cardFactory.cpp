@@ -14,6 +14,8 @@ CardFactory* CardFactory::getFactory(){
 
 //return all 104 cards, shuffled
 Deck CardFactory::getDeck(){
+    std::mt19937 r{std::random_device{}()};
+    std::shuffle(deck.begin(), deck.end(), r);
     return deck;
 }
 
@@ -45,8 +47,7 @@ CardFactory::CardFactory(){
     for (int i = 0; i < 6; i++) {
         deck.push_back(new Emerald());
     }
-    std::mt19937 r{std::random_device{}()};
-    std::shuffle(deck.begin(), deck.end(), r);
+    
    
 
 }
