@@ -10,12 +10,11 @@ class Hand {
    
 public:
     Hand() = default;
+    Hand( std::istream&, CardFactory* );
     Hand& operator+=(Card*);
     Card* play();
     Card* top();
     Card* operator[](int);
-     Hand( std::istream&, CardFactory* );
-    
 };
 
 #endif /* hand_h */
