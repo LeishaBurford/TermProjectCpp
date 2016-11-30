@@ -14,13 +14,13 @@ class Player {
     const Chain_Base& getChain(int i) const {return *(chains.at(i));}
     std::string name;
     int numCoins;
-    Hand hand;
     int maxChains;
     int activeChains;
     std::vector<Chain_Base*> chains; //should be Chain_Base* ?
 public:
-    
+    Hand hand;
     std::string getName() const;
+    Player() = default;
     Player( std::string& _name) : name(_name), numCoins(0), maxChains(2), activeChains(0){
         chains.resize(2);
     }

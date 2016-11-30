@@ -27,6 +27,8 @@ public:
 
 inline std::ostream& operator<< (std::ostream& o, const DiscardPile& discardPile)
 {
-    discardPile.print(o);
+    if(discardPile.pile.size() > 0){
+        std::cout << *(discardPile.pile.back());
+    }
     return o;
 }

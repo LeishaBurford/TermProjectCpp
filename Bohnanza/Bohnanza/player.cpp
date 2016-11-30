@@ -51,7 +51,7 @@ void Player::buyThirdChain() {
 void Player::print(const ostream& out) const {
     std::cout << this->getName() << " " << this->numCoins << " coins"<<  std::endl;
     for(int i = 0; i < activeChains; i++) {
-        std::cout << "Here " << chains.at(i) << std::endl; //chain is Chain<Card_Base*>
+        std::cout << chains.at(i) << std::endl; //chain is Chain<Card_Base*>
         
     }
 }
