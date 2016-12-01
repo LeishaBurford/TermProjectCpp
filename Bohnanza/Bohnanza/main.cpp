@@ -30,8 +30,8 @@ int main() {
             Display Table                                                   --Done
             If Player has 2 coins and two chains and decides to buy extra chain     --Done
                 Add chain to player                                                 --Done
-            Player draws top card from Deck 
-            If TradeArea is not empty
+            Player draws top card from Deck                                         --Done
+            If TradeArea is not empty                                               --Done
                 Add gemstone cards from the TradeArea to chains or discard them. 
             Play topmost card from Hand.
             If chain is ended, cards for chain are removed and player receives coin(s). 
@@ -58,7 +58,7 @@ int main() {
 
     
     std::string loadGame;
-    std::cout << "Let's Play Bohnanza!! \nWould you like to load a previous game?(y/n)" <<std::endl;
+    std::cout << "Let's Play Bohnanza!! \nWould you like to load a previous game?(y/n): ";
     std::cin >> loadGame;
     std::string responsesYN("yYnN");
     checkValidInput(loadGame, responsesYN);
@@ -81,20 +81,18 @@ int main() {
     Player players[2] = {{player1}, {player2}};
     //initialize hands and deck
     CardFactory* factory = CardFactory::getFactory();
-    Hand p1 = players[0].hand;
-    Hand p2 = players[1].hand;
     Deck deck(factory->getDeck());  //this copies deck, not ideal cannot find another way
     
     for(int i = 0; i < 5; i++) {
-        p1 += deck.draw();
-        p2 += deck.draw();
+        players[0].hand += deck.draw();
+        players[1].hand += deck.draw();
     }
     //test
 //    std::cout << "testing player hands...\n\tP1: " << p1 << "\n\tP2: " << p2 << "\n...end test" <<std::endl;
-//    auto card1 = p1[2];
-//    auto card2 = p2[2];
-//    std::cout << "testing hand subscript operator...\n\tRemoved: " << *card1 << ", P1: " << p1 << std::endl;
-//    std::cout <<"\tRemoved: " << *card2 << ", P2: " << p2 << "\n...end test" <<std::endl;
+//    p1[2];
+//    p2[2];
+//    std::cout << "testing hand subscript operator...\n\tP1: " << p1 << std::endl;
+//    std::cout <<"\tP2: " << p2 << "\n...end test" <<std::endl;
     //initialize tradeArea and discardPile
     TradeArea tradeArea;
     DiscardPile discardPile;
@@ -105,7 +103,7 @@ int main() {
     //while there are cards in deck
     while(!deck.empty()){
         //check if user wants to pause
-        std::cout << "Would you like to pause the game?(y/n)" << std::endl;
+        std::cout << "Would you like to pause the game?(y/n): ";
         std::string pauseGame;
         std::cin >> pauseGame;
         checkValidInput(pauseGame, responsesYN);
@@ -115,6 +113,7 @@ int main() {
         }
         //for each player
         for(auto player : players) {
+            std::cout << player.getName() <<"'s turn" << std::endl;
             //display table
             std::cout << table << std::endl;
             //If Player has 2 coins and two chains
@@ -131,20 +130,45 @@ int main() {
                     std::cout << "Ok, you now have 3 chains" << std::endl;
                 }
             }
-            //Player draws top card from Deck
+            //Player draws top card from Deck -- assumed to go into hand
             auto drawCard = deck.draw();
-            std::cout << "Card drawn from deck: " << *drawCard << std::endl;
+            player.hand += drawCard;
+            std::cout << drawCard->getName() <<" drawn from deck, added to back of hand"<< std::endl;
+            //test
+            //std::cout << "testing += to hand...\n\tHand: " << player.hand << "\n...end test" << std::endl;
+            //variable below for testing
+            auto c = deck.draw();
+            tradeArea.operator+=(c);
             //If TradeArea is not empty
             if(tradeArea.numCards() != 0){
+                
                 //Add gemstone cards from the TradeArea to chains or discard them.
-                std::cout << "Trade Area:\n\t " << tradeArea << std::endl;
+                std::cout << "Trade Area: " << tradeArea << std::endl;
                 std::cout<< "You may chain a card or discard it" << std::endl;
-                for(auto card : tradeArea._tradeArea){
+                //for(std::iterator<std::list<Card*>, Card*> tradeArea.tradeArea){  //--after loop, trade area will be empty
+                //variable below for testing
+                //int i = 0;
+                std::cout << "num cards: " << tradeArea.numCards() << " list size: " << tradeArea._tradeArea.size()<<std::endl;
+                //for each card in tradeArea
+                for(auto card: tradeArea._tradeArea){//problem 'cause we are changing _tradearea within loop?
+                
                     std::string chainOrDiscard;
-                    std::cout << "Card type: " << card->getName() << "discard or chain? (d/c)" << std::endl;
+                    //std::cout << "loop number: " << i << std::endl;
+                    //card is null, second time through??
+                    std::cout << "Card to chain or discard: " << card->getName() << "\ndiscard or chain? (d/c)" << std::endl;
+                    
                     std::cin >> chainOrDiscard;
                     std::string responsesDC("cCdD");
                     checkValidInput(chainOrDiscard, responsesDC);
+                    if(chainOrDiscard == "c" || chainOrDiscard == "C") {
+                        //chain card
+                    }else {
+                        //discard card
+                        discardPile.operator+=(tradeArea.trade(card->getName()));
+                        //test
+                        //std::cout << "testing += to discardPile...\n\tTradeArea: " << tradeArea << "\n\tDiscardPile: " << discardPile << "\n...end test" << std::endl;
+                    }
+                    //i++;
                 }
                 
                 

@@ -20,10 +20,15 @@ bool TradeArea::legal( Card* _card) {
 //removes a card of the corresponding gemstone name from the tradearea.
 Card* TradeArea::trade( std::string name) {
     Card* card;
-    for (std::list<Card*>::const_iterator i = _tradeArea.begin(), end = _tradeArea.end(); i != end; ++i) {
+    for (std::list<Card*>::iterator i = _tradeArea.begin(), end = _tradeArea.end(); i != end; ++i) {
         if((*i)->getName() == name) {
             card = *i;
-            _tradeArea.remove(*i);
+            //if(_tradeArea.size() == 1){
+                //_tradeArea.resize(0);
+            //}else {
+                _tradeArea.remove(card);
+                
+           // }
             break;
         }
     }

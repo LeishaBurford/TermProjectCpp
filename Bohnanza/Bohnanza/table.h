@@ -24,9 +24,9 @@ public:
 inline std::ostream& operator<< (std::ostream& o, const Table& table)//this one is for the game
 {
     std::cout << "---------------Table--------------" << std::endl;
-    std::cout << "\tPlayers:\n" << table.player1 << table.player2 << std::endl;
-    std::cout << "\tTrade Area:\n" << table.tradeArea << std::endl;
-    std::cout << "\tDiscard Pile, top card: " << table.discardPile << std::endl;
+    std::cout << "Players:\n\t" << table.player1 << "\t"<< table.player2 << std::endl;
+    std::cout << "Trade Area:\n" << table.tradeArea << std::endl;
+    std::cout << "Discard Pile, top card: " << table.discardPile << std::endl;
     std::cout << "----------------------------------" << std::endl;
     return o;
 }
