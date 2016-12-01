@@ -14,6 +14,11 @@ class Table {
     DiscardPile discardPile;
 public:
     Table() = default;
+    void update(Deck& _deck, TradeArea& _ta, DiscardPile& _dp ) {
+        deck = _deck;
+        tradeArea = _ta;
+        discardPile = _dp;
+    }
     Table(Player& _p1, Player& _p2, Deck& _deck, TradeArea& _ta, DiscardPile& _dp) : player1(_p1), player2(_p2), deck(_deck), tradeArea(_ta), discardPile(_dp){}
     Table(std::istream&, CardFactory*);//TODO
     bool win(std::string&);

@@ -6,8 +6,9 @@
 
 class TradeArea {
     friend ostream &operator<<(ostream& out, const TradeArea& tradeArea);
-public:
     std::list<Card*> _tradeArea;
+public:
+    std::list<Card*>& getTradeArea(){return _tradeArea;}
     TradeArea() = default;
     TradeArea( std::istream&, CardFactory* ); //TODO
     TradeArea& operator+=( Card* );

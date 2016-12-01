@@ -99,7 +99,10 @@ int main() {
     //initialize table
     Table table(players[0], players[1], deck, tradeArea, discardPile);
     std::cout << "Let the game begin!" << std::endl;
-    
+    //test table
+    tradeArea+=(deck.draw());
+    discardPile+=(deck.draw());
+    table.update(deck, tradeArea, discardPile);
     //while there are cards in deck
     while(!deck.empty()){
         //check if user wants to pause
@@ -145,16 +148,11 @@ int main() {
                 //Add gemstone cards from the TradeArea to chains or discard them.
                 std::cout << "Trade Area: " << tradeArea << std::endl;
                 std::cout<< "You may chain a card or discard it" << std::endl;
-                //for(std::iterator<std::list<Card*>, Card*> tradeArea.tradeArea){  //--after loop, trade area will be empty
-                //variable below for testing
-                //int i = 0;
-                std::cout << "num cards: " << tradeArea.numCards() << " list size: " << tradeArea._tradeArea.size()<<std::endl;
-                //for each card in tradeArea
-                for(auto card: tradeArea._tradeArea){//problem 'cause we are changing _tradearea within loop?
                 
+                std::cout << "num cards: " << tradeArea.numCards() << " list size: " << tradeArea.getTradeArea().size()<<std::endl;
+                //for each card in tradeArea
+                for(auto card: tradeArea.getTradeArea()){
                     std::string chainOrDiscard;
-                    //std::cout << "loop number: " << i << std::endl;
-                    //card is null, second time through??
                     std::cout << "Card to chain or discard: " << card->getName() << "\ndiscard or chain? (d/c)" << std::endl;
                     
                     std::cin >> chainOrDiscard;
@@ -166,14 +164,11 @@ int main() {
                         //discard card
                         discardPile.operator+=(tradeArea.trade(card->getName()));
                         //test
-                        //std::cout << "testing += to discardPile...\n\tTradeArea: " << tradeArea << "\n\tDiscardPile: " << discardPile << "\n...end test" << std::endl;
+                        std::cout << "testing += to discardPile...\n\tTradeArea: " << tradeArea << "\n\tDiscardPile: " << discardPile << "\n...end test" << std::endl;
                     }
-                    //i++;
+                    
                 }
-                
-                
             }
-            
         }
         
     }
