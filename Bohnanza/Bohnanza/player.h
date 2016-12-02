@@ -31,7 +31,7 @@ public:
     int getNumCoins();
     Player& operator+=( int );
     Chain_Base& operator[](int i) {
-        return getChain(i);
+        return getChain(i);//chain_Base& = chainBase
     }
     const Chain_Base& operator[](int i) const {
         return getChain(i);

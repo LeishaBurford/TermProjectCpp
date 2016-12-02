@@ -11,6 +11,7 @@ class Chain_Base {
 public:
     virtual int sell() = 0;
     virtual Chain_Base& operator+=(Card*) =0;
+    std::vector<Card*> chain;
     
 };
 
@@ -29,6 +30,9 @@ public:
     
     // adds a card to the Chain. If the run-time type does not match the template type of the chain an exception of type IllegalType needs to be raised.
     Chain<T>& operator+=(Card* card) {
+        if(typeid(T) != typeid(*(dynamic_cast<T*>(card)))){
+            throw "IllegalType";
+        }
         chain.push_back(card);
         return *this;
     }
@@ -44,6 +48,7 @@ public:
                 if(chain.size() >= neededCards) return coins;
             }
         }
+        
         return 0;
     }
 };

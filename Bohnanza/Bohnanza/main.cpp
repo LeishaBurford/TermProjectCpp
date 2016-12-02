@@ -10,13 +10,53 @@
 #include "table.h"
 
 
-void checkValidInput(std::string& s, std::string& responses){
-   // std::string responses("YyNn");
+void checkValidInput(std::string& s, std::string responses){
     while(responses.find(s) == std::string::npos) { //true when loadGame is not in responses
         std::cout << "That's not an option, enter " << responses.at(0) << " or " << responses.at(2) << std::endl;
         std::cin >> s;
     }
-    //return s;
+}
+
+Chain_Base& makeChain(std::string cardName) {
+    Chain_Base* newChain;
+    if(cardName == "Quartz"){
+        //chainBase = dynamic_cast<Chain<Quartz>&>(chainBase);
+        //chainBase = Chain<Quartz>();
+        newChain = new Chain<Quartz>;
+    } else if(cardName == "Hematite") {
+        //chainBase = dynamic_cast<Chain<Hematite>&>(chainBase);
+        //chainBase = Chain<Hematite>();
+        newChain = new Chain<Hematite>;
+    } else if(cardName == "Obsidian") {
+        //chainBase = dynamic_cast<Chain<Obsidian>&>(chainBase);
+        //chainBase = Chain<Obsidian>();
+        newChain = new Chain<Obsidian>;
+    } else if(cardName == "Malachite") {
+        //chainBase = dynamic_cast<Chain<Malachite>&>(chainBase);
+        //chainBase = Chain<Malachite>();
+        newChain = new Chain<Malachite>;
+    } else if(cardName == "Turquoise") {
+        //chainBase = dynamic_cast<Chain<Turquoise>&>(chainBase);
+        //chainBase = Chain<Turquoise>();
+        newChain = new Chain<Turquoise>;
+    } else if(cardName == "Ruby") {
+        //chainBase = dynamic_cast<Chain<Ruby>&>(chainBase);
+        //chainBase = Chain<Ruby>();
+        newChain = new Chain<Ruby>;
+    } else if(cardName == "Amethyst") {
+        //chainBase = dynamic_cast<Chain<Amethyst>&>(chainBase);
+        //chainBase = Chain<Amethyst>();
+        newChain = new Chain<Amethyst>;
+    } else if(cardName == "Emerald") {
+        //chainBase = dynamic_cast<Chain<Emerald>&>(chainBase);
+        //chainBase = Chain<Emerald>();
+        newChain = new Chain<Emerald>;
+    } else {
+        //this should never occur
+        std::cout << cardName << " is not a valid card name" << std::endl;
+        newChain = nullptr;
+    }
+    return *newChain;
 }
 
 int main() {
@@ -154,7 +194,33 @@ int main() {
                     std::string responsesDC("cCdD");
                     checkValidInput(chainOrDiscard, responsesDC);
                     if(chainOrDiscard == "c" || chainOrDiscard == "C") {
-                        //chain card --implement this next
+                        //chain card
+                        //check if chain of card type exists
+                        bool chainExists = false;
+                        int chainToAdd = 0;
+                        for(int i = 0; i < player.getNumChains(); i++){
+                            if(player[i].chain.back()->getName() == card->getName()){//checking type of chain
+                                std::cout << "In loop :)" << std::endl;
+                                chainExists = true;
+                                chainToAdd = i;
+                                break;
+                            }
+                        }
+                        //if chain exists, add card
+                        if(chainExists){
+                            player[chainToAdd]+=card;
+                        } else {    //-------not working
+                            //if room for another chain
+                            if(player.getNumChains() < player.getMaxNumChains()){
+                                //make chain --line below causes errors
+                                //player[player.getNumChains()] = makeChain(card->getName());
+                                //add card
+                                player[player.getNumChains() - 1]+=card;
+                            }else{
+                                //tie and sell a chain
+                            }
+                        }
+                        
                     }else {
                         //discard card
                         discardPile+=(tradeArea.trade(card->getName()));
@@ -170,6 +236,7 @@ int main() {
         }
         
     }
+    //delete players[0];
     delete factory;
 }
 
