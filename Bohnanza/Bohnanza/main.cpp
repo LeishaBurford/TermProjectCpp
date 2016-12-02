@@ -121,7 +121,7 @@ int main() {
                 //output here not tested yet
                 //ask for third chain purchase
                 std::string thirdChain;
-                std::cout << "Would you like to purchase a third chain for 2 coins?(y/n)" << std::endl;
+                std::cout << "Would you like to purchase a third chain for 2 coins?(y/n): " << std::endl;
                 std::cin >> thirdChain;
                 checkValidInput(thirdChain, responsesYN);
                 if(thirdChain == "Y" || thirdChain == "y") {
@@ -144,16 +144,17 @@ int main() {
                 //Add gemstone cards from the TradeArea to chains or discard them.
                 std::cout << "Trade Area: " << tradeArea << std::endl;
                 std::cout<< "You may chain a card or discard it" << std::endl;
+                std::list<Card*> temp(tradeArea.getTradeArea()); // needed, cannot iterate and change tradeArea
                 //for each card in tradeArea
-                for(auto card: tradeArea.getTradeArea()){
+                for(auto card: temp){
                     std::string chainOrDiscard;
-                    std::cout << "Card to chain or discard: " << card->getName() << "\ndiscard or chain? (d/c)" << std::endl;
+                    std::cout << "Card to chain or discard: " << card->getName() << "\ndiscard or chain? (d/c): ";
                     
                     std::cin >> chainOrDiscard;
                     std::string responsesDC("cCdD");
                     checkValidInput(chainOrDiscard, responsesDC);
                     if(chainOrDiscard == "c" || chainOrDiscard == "C") {
-                        //chain card
+                        //chain card --implement this next
                     }else {
                         //discard card
                         discardPile+=(tradeArea.trade(card->getName()));
