@@ -9,7 +9,7 @@ TradeArea& TradeArea::operator+=( Card* card) {
 
 //returns true if the card can be legally added to the TradeArea,i.e.,a card of the same gemstone is already in the TradeArea.
 bool TradeArea::legal( Card* _card) {
-    for(auto card : _tradeArea) {
+    for(auto card : getTradeArea()) {
         if(card->getName() == _card->getName()) {
             return 1;
         }
@@ -22,7 +22,6 @@ bool TradeArea::legal( Card* _card) {
 Card* TradeArea::trade( std::string name) {
     Card* card = nullptr;
     std::list<Card*> temp(_tradeArea);
-    std::cout << "Testing in tradearea" << std::endl;
     for (std::list<Card*>::iterator i = _tradeArea.begin(), end = _tradeArea.end(); i != end; ++i) {
         card = *i;
         if((*i)->getName() == name) {

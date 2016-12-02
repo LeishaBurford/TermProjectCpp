@@ -32,7 +32,7 @@ int main() {
                 Add chain to player                                                 --Done
             Player draws top card from Deck                                         --Done
             If TradeArea is not empty                                               --Done
-                Add gemstone cards from the TradeArea to chains or discard them. 
+                Add gemstone cards from the TradeArea to chains or discard them.    --Done
             Play topmost card from Hand.
             If chain is ended, cards for chain are removed and player receives coin(s). 
             If player decides to
@@ -98,11 +98,7 @@ int main() {
     DiscardPile discardPile;
     //initialize table
     Table table(players[0], players[1], deck, tradeArea, discardPile);
-    std::cout << "Let the game begin!" << std::endl;
-    //test table
-    tradeArea+=(deck.draw());
-    discardPile+=(deck.draw());
-    table.update(deck, tradeArea, discardPile);
+    std::cout << "Let the game begin!" << std::endl;    
     //while there are cards in deck
     while(!deck.empty()){
         //check if user wants to pause
@@ -118,6 +114,7 @@ int main() {
         for(auto player : players) {
             std::cout << player.getName() <<"'s turn" << std::endl;
             //display table
+            table.update(deck, tradeArea, discardPile);
             std::cout << table << std::endl;
             //If Player has 2 coins and two chains
             if(player.getNumCoins() >= 2 && player.getNumChains() == 2){
@@ -144,12 +141,9 @@ int main() {
             tradeArea.operator+=(c);
             //If TradeArea is not empty
             if(tradeArea.numCards() != 0){
-                
                 //Add gemstone cards from the TradeArea to chains or discard them.
                 std::cout << "Trade Area: " << tradeArea << std::endl;
                 std::cout<< "You may chain a card or discard it" << std::endl;
-                
-                std::cout << "num cards: " << tradeArea.numCards() << " list size: " << tradeArea.getTradeArea().size()<<std::endl;
                 //for each card in tradeArea
                 for(auto card: tradeArea.getTradeArea()){
                     std::string chainOrDiscard;
@@ -162,13 +156,16 @@ int main() {
                         //chain card
                     }else {
                         //discard card
-                        discardPile.operator+=(tradeArea.trade(card->getName()));
+                        discardPile+=(tradeArea.trade(card->getName()));
                         //test
-                        std::cout << "testing += to discardPile...\n\tTradeArea: " << tradeArea << "\n\tDiscardPile: " << discardPile << "\n...end test" << std::endl;
+//                        std::cout << "testing += to discardPile...\n\tTradeArea: " << tradeArea << "\n\tDiscardPile: " << discardPile << "\n...end test" << std::endl;
                     }
                     
                 }
             }
+            //play top most card from hand
+            //card must be added to chain of same stones
+            //if chain is ended, cards are removed and player recieves coins
         }
         
     }
