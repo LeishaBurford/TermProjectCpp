@@ -59,6 +59,18 @@ Chain_Base& makeChain(std::string cardName) {
     return *newChain;
 }
 
+bool checkForChain(Player& player, int& j, Card* card) {
+    bool chainExists = false;
+    for(int i = 0; i < player.getNumChains(); i++){
+        if(player[i].chain.back()->getName() == card->getName()){//checking type of chain
+            chainExists = true;
+            j = i;
+            break;
+        }
+    }
+    return chainExists;
+}
+
 int main() {
     /*The simplified pseudo-code of the main loop is as follows. Setup:
      Input the names of 2 players.                                          --Done
@@ -196,16 +208,8 @@ int main() {
                     if(chainOrDiscard == "c" || chainOrDiscard == "C") {
                         //chain card
                         //check if chain of card type exists
-                        bool chainExists = false;
                         int chainToAdd = 0;
-                        for(int i = 0; i < player.getNumChains(); i++){
-                            if(player[i].chain.back()->getName() == card->getName()){//checking type of chain
-                                std::cout << "In loop :)" << std::endl;
-                                chainExists = true;
-                                chainToAdd = i;
-                                break;
-                            }
-                        }
+                        bool chainExists = checkForChain(player, chainToAdd, card);
                         //if chain exists, add card
                         if(chainExists){
                             player[chainToAdd]+=card;
@@ -232,7 +236,26 @@ int main() {
             }
             //play top most card from hand
             //card must be added to chain of same stones
-            //if chain is ended, cards are removed and player recieves coins
+            //If chain is ended, cards for chain are removed and player receives coin(s).
+            //If player decides to
+                //Play the now topmost card from Hand.
+            //If chain is ended, cards for chain are removed and player receives coin(s).
+            //If player decides to
+                //Show the player's full hand and player selects an arbitrary card
+                //Discard the arbitrary card from the player's hand and place it on the discard pile.
+            //Draw three cards from the deck and place cards in the trade area
+            //while topcardofdiscardpilematchesanexistingcardinthetradearea
+                //draw the top-most card from the discard pile and place it in the trade area
+            //end
+            //for all cards in the trade area
+                //if player wants to chain the card
+                    //chain the card
+                //else
+                    //card remains in trade area for the next player
+            //end
+            //Draw two cards from Deck and add the cards to the player's hand (at the back).
+        //end
+    //end
         }
         
     }
