@@ -1,6 +1,12 @@
 #include "trade_area.h"
 
-
+TradeArea::TradeArea( std::istream& i, CardFactory* factory) {
+    
+    char ch;
+    while (i >> ch && ch != '*') {
+        _tradeArea.push_back(factory->getCard(ch));
+    }
+}
 //adds the card to the tradearea but it does not check if it is legal to place the card.
 TradeArea& TradeArea::operator+=( Card* card) {
     _tradeArea.push_back(card);

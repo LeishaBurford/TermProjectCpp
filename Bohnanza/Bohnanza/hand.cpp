@@ -1,6 +1,13 @@
 
 #include "hand.h"
 
+Hand::Hand( std::istream& i, CardFactory* factory) {
+    char ch;
+    while (i >> ch && ch != '*') {
+        hand.push(factory->getCard(ch));
+    }
+
+}
 
 //adds the card to the rear of the hand
 Hand& Hand::operator+=(Card* card) {

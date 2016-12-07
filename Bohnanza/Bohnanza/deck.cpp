@@ -8,9 +8,9 @@ Card* Deck::draw() {
     return toReturn;
 }
 
-void Deck::print(const ostream& out) const {
-    for(auto card : *this) {//for(at(i))
-        std::cout << *card << " ";
+Deck::Deck(std::istream& in, CardFactory* factory){
+    char ch;
+    while (in >> ch && ch != '*') {
+        this->push_back(factory->getCard(ch));
     }
-    std::cout << std::endl;
 }

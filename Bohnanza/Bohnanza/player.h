@@ -9,15 +9,16 @@
 
 class Player {
     friend ostream &operator<<(ostream& out, const Player& player);
-    void print(const ostream& out) const;
+    
     Chain_Base& getChain(int i){return *(chains.at(i));}
     const Chain_Base& getChain(int i) const {return *(chains.at(i));}
     std::string name;
     int numCoins;
     int maxChains;
     int activeChains;
-    std::vector<Chain_Base*> chains; //should be Chain_Base* ?
+    std::vector<Chain_Base*> chains;
 public:
+    void print(std::ostream& out) const;
     Hand hand;
     std::string getName() const;
     Player() = default;
@@ -25,7 +26,7 @@ public:
         chains.resize(2);
     }
     
-    Player( const std::istream&, CardFactory* );
+    Player(std::istream&, CardFactory* );
     int getMaxNumChains();
     int getNumChains();
     int getNumCoins();
@@ -43,7 +44,11 @@ public:
 
 inline std::ostream& operator<< (std::ostream& o, const Player& player)
 {
-    player.print(o);
+    std::cout << player.getName() << " " << player.numCoins << " coins"<<  std::endl;
+    for(int i = 0; i < player.activeChains; i++) {
+        std::cout << player.chains.at(i) << std::endl; //chain is Chain<Card_Base*>
+        
+    }
     return o;
 }
 

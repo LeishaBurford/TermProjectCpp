@@ -3,8 +3,13 @@
 #include "discard_pile.h"
 
 
-//TODO
-DiscardPile::DiscardPile( std::istream&, CardFactory* ){}
+
+DiscardPile::DiscardPile( std::istream& i, CardFactory* factory){
+    char ch;
+    while (i >> ch && ch != '*') {
+        pile.push_back(factory->getCard(ch));
+    }
+}
 
 //discards the card to the pile.
 DiscardPile& DiscardPile::operator+=( Card* card) {

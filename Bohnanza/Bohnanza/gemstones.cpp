@@ -38,8 +38,8 @@ string Quartz::getName() const{
 }
 
 //inserts the first character for the card into the output stream supplied as argument.
-void Quartz::print(const ostream& out) const {
-    std::cout << Quartz::getName()[0];
+void Quartz::print(ostream& out) const {
+    out << Quartz::getName()[0];
     return;
 }
 
@@ -58,8 +58,8 @@ string Hematite::getName() const{
 }
 
 //inserts the first character for the card into the output stream supplied as argument.
-void Hematite::print(const ostream& out) const {
-    std::cout << Hematite::getName()[0];
+void Hematite::print(ostream& out) const {
+    out << Hematite::getName()[0];
     return;
 }
 
@@ -78,8 +78,8 @@ string Obsidian::getName() const {
 }
 
 //inserts the first character for the card into the output stream supplied as argument.
-void Obsidian::print(const ostream& out) const {
-    std::cout << Obsidian::getName()[0];
+void Obsidian::print(ostream& out) const {
+    out << Obsidian::getName()[0];
     return;
 }
 
@@ -98,8 +98,8 @@ string Malachite::getName() const{
 }
 
 //inserts the first character for the card into the output stream supplied as argument.
-void Malachite::print(const ostream& out) const {
-    std::cout << Malachite::getName()[0];
+void Malachite::print(ostream& out) const {
+    out << Malachite::getName()[0];
     return;
 }
 
@@ -118,8 +118,8 @@ string Turquoise::getName() const{
 }
 
 //inserts the first character for the card into the output stream supplied as argument.
-void Turquoise::print(const ostream& out) const {
-    std::cout << Turquoise::getName()[0];
+void Turquoise::print(ostream& out) const {
+    out << Turquoise::getName()[0];
     return;
 }
 
@@ -138,8 +138,8 @@ string Ruby::getName() const{
 }
 
 //inserts the first character for the card into the output stream supplied as argument.
-void Ruby::print(const ostream& out) const {
-    std::cout << Ruby::getName()[0];
+void Ruby::print(ostream& out) const {
+    out << Ruby::getName()[0];
     return;
 }
 
@@ -158,8 +158,8 @@ string Amethyst::getName() const{
 }
 
 //inserts the first character for the card into the output stream supplied as argument.
-void Amethyst::print(const ostream& out) const {
-    std::cout << Amethyst::getName()[0];
+void Amethyst::print(ostream& out) const {
+    out << Amethyst::getName()[0];
     return;
 }
 
@@ -176,8 +176,8 @@ string Emerald::getName() const{
 }
 
 //inserts the first character for the card into the output stream supplied as argument.
-void Emerald::print(const ostream& out) const {
-    std::cout << Emerald::getName()[0];
+void Emerald::print(ostream& out) const {
+    out << Emerald::getName()[0];
     return;
 }
 

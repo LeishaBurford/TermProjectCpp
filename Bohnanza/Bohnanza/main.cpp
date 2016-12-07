@@ -11,53 +11,13 @@
 
 
 void checkValidInput(std::string& s, std::string responses){
-    while(responses.find(s) == std::string::npos) { //true when loadGame is not in responses
+    while(responses.find(s) == std::string::npos) { //true when s is not in responses
         std::cout << "That's not an option, enter " << responses.at(0) << " or " << responses.at(2) << std::endl;
         std::cin >> s;
     }
 }
 
-Chain_Base& makeChain(std::string cardName) {
-    Chain_Base* newChain;
-    if(cardName == "Quartz"){
-        //chainBase = dynamic_cast<Chain<Quartz>&>(chainBase);
-        //chainBase = Chain<Quartz>();
-        newChain = new Chain<Quartz>;
-    } else if(cardName == "Hematite") {
-        //chainBase = dynamic_cast<Chain<Hematite>&>(chainBase);
-        //chainBase = Chain<Hematite>();
-        newChain = new Chain<Hematite>;
-    } else if(cardName == "Obsidian") {
-        //chainBase = dynamic_cast<Chain<Obsidian>&>(chainBase);
-        //chainBase = Chain<Obsidian>();
-        newChain = new Chain<Obsidian>;
-    } else if(cardName == "Malachite") {
-        //chainBase = dynamic_cast<Chain<Malachite>&>(chainBase);
-        //chainBase = Chain<Malachite>();
-        newChain = new Chain<Malachite>;
-    } else if(cardName == "Turquoise") {
-        //chainBase = dynamic_cast<Chain<Turquoise>&>(chainBase);
-        //chainBase = Chain<Turquoise>();
-        newChain = new Chain<Turquoise>;
-    } else if(cardName == "Ruby") {
-        //chainBase = dynamic_cast<Chain<Ruby>&>(chainBase);
-        //chainBase = Chain<Ruby>();
-        newChain = new Chain<Ruby>;
-    } else if(cardName == "Amethyst") {
-        //chainBase = dynamic_cast<Chain<Amethyst>&>(chainBase);
-        //chainBase = Chain<Amethyst>();
-        newChain = new Chain<Amethyst>;
-    } else if(cardName == "Emerald") {
-        //chainBase = dynamic_cast<Chain<Emerald>&>(chainBase);
-        //chainBase = Chain<Emerald>();
-        newChain = new Chain<Emerald>;
-    } else {
-        //this should never occur
-        std::cout << cardName << " is not a valid card name" << std::endl;
-        newChain = nullptr;
-    }
-    return *newChain;
-}
+
 
 bool checkForChain(Player& player, int& j, Card* card) {
     bool chainExists = false;
@@ -72,42 +32,16 @@ bool checkForChain(Player& player, int& j, Card* card) {
 }
 
 int main() {
-    /*The simplified pseudo-code of the main loop is as follows. Setup:
-     Input the names of 2 players.                                          --Done
-     Initialize the Deck and draw 5 cards for the Hand of each Player; or   --Done
-     Load paused game from file.
-     While there are still cards on the Deck`                               --Done
-        if pause save game to file and exit
-        For each Player                                                     --Done
-            Display Table                                                   --Done
-            If Player has 2 coins and two chains and decides to buy extra chain     --Done
-                Add chain to player                                                 --Done
-            Player draws top card from Deck                                         --Done
-            If TradeArea is not empty                                               --Done
-                Add gemstone cards from the TradeArea to chains or discard them.    --Done
-            Play topmost card from Hand.
-            If chain is ended, cards for chain are removed and player receives coin(s). 
-            If player decides to
-                Play the now topmost card from Hand.
-            If chain is ended, cards for chain are removed and player receives coin(s). 
-            If player decides to
-                Show the player's full hand and player selects an arbitrary card
-                Discard the arbitrary card from the player's hand and place it on the discard pile. 
-            Draw three cards from the deck and place cards in the trade area
-            while topcardofdiscardpilematchesanexistingcardinthetradearea
-                draw the top-most card from the discard pile and place it in the trade area
-            end
-            for all cards in the trade area
-                if player wants to chain the card 
-                    chain the card
-                else
-                    card remains in trade area for the next player
-            end
-            Draw two cards from Deck and add the cards to the player's hand (at the back).
-        end
-     end
-     */
-
+    //cardfactory
+    CardFactory *factory = CardFactory::getFactory();
+    //deck
+    Deck deck;
+    //players
+    Player players[2];
+    TradeArea tradeArea;
+    DiscardPile discardPile;
+    //table
+    Table table;
     
     std::string loadGame;
     std::cout << "Let's Play Bohnanza!! \nWould you like to load a previous game?(y/n): ";
@@ -116,41 +50,38 @@ int main() {
     checkValidInput(loadGame, responsesYN);
     //if user requested to load game
     if(loadGame == "Y" || loadGame == "y"){
-        std::cout << "Come on! You know that isn't implemented yet!" << std::endl;
-        return 0;
+        std::ifstream file("/Users/leishaburford/Documents/TermProjectC++/TermProjectCpp/Bohnanza/Bohnanza/pausedGame.txt");
+        deck = Deck::Deck(file, factory);
+        players[0] = Player::Player(file, factory);
+        players[1] = Player::Player(file, factory);
+        tradeArea = TradeArea::TradeArea(file, factory);
+        discardPile = DiscardPile::DiscardPile(file, factory);
+        //initialize table
+        table = Table::Table(players[0], players[1], deck, tradeArea, discardPile);
+    }else{
+    
+        //initialize players
+        std::string player1, player2;
+        std::cout << "Player 1, enter your name: ";
+        std::cin >> player1;
+        std::cout << "Player 2, enter your name: ";
+        std::cin >> player2;
+        //create player objects
+        players[0] = {player1};
+        players[1] ={player2};
+        //initialize hands and deck
+        deck= Deck::Deck(factory->getDeck());  //this copies deck, not ideal cannot find another way
+       
+        for(int i = 0; i < 5; i++) {
+            players[0].hand += deck.draw();
+            players[1].hand += deck.draw();
+        }
+        //initialize table
+        table = Table::Table(players[0], players[1], deck, tradeArea, discardPile);
     }
-    
-    //initialize players
-    std::string player1, player2;
-    std::cout << "Player 1, enter your name: ";
-    std::cin >> player1;
-    std::cout << "Player 2, enter your name: ";
-    std::cin >> player2;
-    //test name input
-//    std::cout << "testing name input...\n\tPlayer1: " << player1 << "\n\tPlayer2: " << player2 << "\n...end test" <<std::endl;
-    
-    //create player objects
-    Player players[2] = {{player1}, {player2}};
-    //initialize hands and deck
-    CardFactory* factory = CardFactory::getFactory();
-    Deck deck(factory->getDeck());  //this copies deck, not ideal cannot find another way
-    
-    for(int i = 0; i < 5; i++) {
-        players[0].hand += deck.draw();
-        players[1].hand += deck.draw();
-    }
-    //test
-//    std::cout << "testing player hands...\n\tP1: " << p1 << "\n\tP2: " << p2 << "\n...end test" <<std::endl;
-//    p1[2];
-//    p2[2];
-//    std::cout << "testing hand subscript operator...\n\tP1: " << p1 << std::endl;
-//    std::cout <<"\tP2: " << p2 << "\n...end test" <<std::endl;
-    //initialize tradeArea and discardPile
-    TradeArea tradeArea;
-    DiscardPile discardPile;
-    //initialize table
-    Table table(players[0], players[1], deck, tradeArea, discardPile);
-    std::cout << "Let the game begin!" << std::endl;    
+   
+    std::cout << "Let the game begin!" << std::endl;
+    //std::cout << deck. << std::endl;
     //while there are cards in deck
     while(!deck.empty()){
         //check if user wants to pause
@@ -159,7 +90,15 @@ int main() {
         std::cin >> pauseGame;
         checkValidInput(pauseGame, responsesYN);
         if(pauseGame == "Y" || pauseGame == "y"){
-            std::cout << "Come on! You know that isn't implemented yet!" << std::endl;
+            std::ofstream outfile("/Users/leishaburford/Documents/TermProjectC++/TermProjectCpp/Bohnanza/Bohnanza/pausedGame.txt");
+            outfile << deck << '*'; //asterix used as termination character
+            players[0].print(outfile);
+            
+            players[1].print(outfile);
+            tradeArea.print(outfile);
+            outfile << '*';
+            discardPile.print(outfile);
+            outfile << '*';
             return 0;
         }
         //for each player
@@ -190,7 +129,7 @@ int main() {
             //std::cout << "testing += to hand...\n\tHand: " << player.hand << "\n...end test" << std::endl;
             //variable below for testing
             auto c = deck.draw();
-            tradeArea.operator+=(c);
+            tradeArea.operator+=(c);//to be removed
             //If TradeArea is not empty
             if(tradeArea.numCards() != 0){
                 //Add gemstone cards from the TradeArea to chains or discard them.
@@ -217,7 +156,7 @@ int main() {
                             //if room for another chain
                             if(player.getNumChains() < player.getMaxNumChains()){
                                 //make chain --line below causes errors
-                                //player[player.getNumChains()] = makeChain(card->getName());
+                                //player[player.getNumChains()]->makeChain(card->getName());
                                 //add card
                                 player[player.getNumChains() - 1]+=card;
                             }else{
@@ -257,7 +196,6 @@ int main() {
         //end
     //end
         }
-        
     }
     //delete players[0];
     delete factory;

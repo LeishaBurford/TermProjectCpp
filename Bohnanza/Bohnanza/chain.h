@@ -7,7 +7,7 @@
 #include "cardfactory.h"
 
 class Chain_Base {
-  //  friend std::ostream &operator<<(std::ostream& out, const Chain_Base& chain_base);
+    friend std::ostream &operator<<(std::ostream& out, const Chain_Base& chain_base);
 public:
     virtual int sell() = 0;
     virtual Chain_Base& operator+=(Card*) =0;
@@ -18,17 +18,18 @@ public:
 template <class T>
 class Chain : public Chain_Base {
     friend std::ostream &operator<<(std::ostream& out, const Chain<T>& chain);
-    //std::vector<Card*> chain;
-    T* type;
+    std::vector<Card*> chain;
 public:
-    std::vector<Card*> chain; //make private after testing!
+    
     Chain() = default;
-    //Chain<T>(string){
-    //    chain<Ruby>
+    Chain(std::istream& i, CardFactory* factory){
+        char ch;
+        while (i >> ch && ch != '*') {
+            chain.push_back(factory->getCard(ch));
+        }
+    };
     
-    Chain( const std::istream&, CardFactory* ){}; // TODO
-    
-    // adds a card to the Chain. If the run-time type does not match the template type of the chain an exception of type IllegalType needs to be raised.
+    // adds a card to the Chain.
     Chain<T>& operator+=(Card* card) {
         if(typeid(T) != typeid(*(dynamic_cast<T*>(card)))){
             throw "IllegalType";
@@ -37,11 +38,9 @@ public:
         return *this;
     }
     
-    //counts the number cards in the current chain and returns the number coins according to the function Card::getCardsPerCoin. TODO check if working
-    //when called, update player num active coins
+    //counts the number cards in the current chain and returns the number coins according to the function Card::getCardsPerCoin.
     int sell() {
         if(!chain.empty()){
-            
             T* card =dynamic_cast<T*>(chain.back());
             for(int coins = 4; ;coins--) {
                 int neededCards = card->getCardsPerCoin(coins);
@@ -50,6 +49,31 @@ public:
         }
         
         return 0;
+    }
+    Chain_Base& makeChain(std::string cardName) {
+        Chain_Base* newChain;
+        if(cardName == "Quartz"){
+            newChain = new Chain<Quartz>();
+        } else if(cardName == "Hematite") {
+            newChain = new Chain<Hematite>();
+        } else if(cardName == "Obsidian") {
+            newChain = new Chain<Obsidian>();
+        } else if(cardName == "Malachite") {
+            newChain = new Chain<Malachite>();
+        } else if(cardName == "Turquoise") {
+            newChain = new Chain<Turquoise>();
+        } else if(cardName == "Ruby") {
+            newChain = new Chain<Ruby>();
+        } else if(cardName == "Amethyst") {
+            newChain = new Chain<Amethyst>();
+        } else if(cardName == "Emerald") {
+            newChain = new Chain<Emerald>();
+        } else {
+            //this should never occur
+            std::cout << cardName << " is not a valid card name" << std::endl;
+            newChain = nullptr;
+        }
+        return *newChain;
     }
 };
 
@@ -68,12 +92,4 @@ inline std::ostream& operator<< (std::ostream& o, const Chain<T>& _chain)
 }
 
 template class Chain<Card>;
-//template class Chain<Quartz>;
-//template class Chain<Hematite>;
-//template class Chain<Obsidian>;
-//template class Chain<Malachite>;
-//template class Chain<Turquoise>;
-//template class Chain<Ruby>;
-//template class Chain<Amethyst>;
-//template class Chain<Emerald>;
 #endif /* chain_h */

@@ -8,10 +8,19 @@ std::string Player::getName() const{
     return name;
 }
 
-//TODO
-//Player needs a constructor which accepts an istream and reconstruct the Player from file.
-Player::Player( const std::istream&, CardFactory* ) {
 
+Player::Player(std::istream& i, CardFactory* factory) {
+    std::string _name;
+    getline(i, name);
+    name = _name;
+    i >>numCoins >> activeChains;
+    for(int i = 0; i < activeChains; i++) {
+        char ch;
+        while(i >> ch && ch != '-') {
+            chains.at(i)->operator+=(factory->getCard(ch));
+        }
+    }
+    
 }
 
 //returnseither2or3
@@ -44,15 +53,12 @@ void Player::buyThirdChain() {
     }
 }
 
-//Also add the insertion operator to print a Player to an std::ostream. The player's name, the number of coins in the player's possession and each of the chains (2 or 3, some possibly empty) should be printed. Note that the Hand is printed with a separate function. The player printout may look as follows:
-//    Jane     3 coins
-//    Ruby     R R R R
-//    Quartz   Q
-void Player::print(const ostream& out) const {
-    std::cout << this->getName() << " " << this->numCoins << " coins"<<  std::endl;
+void Player::print(std::ostream& out) const {
+    out << this->getName() << std::endl << numCoins << activeChains;
     for(int i = 0; i < activeChains; i++) {
-        std::cout << chains.at(i) << std::endl; //chain is Chain<Card_Base*>
-        
+        //line below causing errors
+        //out << *(chains.at(i));
+        out << "-"; //used for read in, to distinguish between chains
     }
 }
 

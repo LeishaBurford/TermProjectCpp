@@ -14,3 +14,12 @@ bool Table::win( std::string& name) {
 void Table::print(std::ostream&) const {
     std::cout << player1 << player2 << deck << tradeArea << discardPile << std::endl;
 }
+
+Table::Table(std::istream& i, CardFactory* factory){
+    player1 = Player(i, factory);
+    player2 = Player(i, factory);
+    deck = Deck(i, factory);
+    tradeArea = TradeArea(i, factory);
+    discardPile = DiscardPile(i, factory);
+
+}

@@ -20,7 +20,7 @@ public:
         discardPile = _dp;
     }
     Table(Player& _p1, Player& _p2, Deck& _deck, TradeArea& _ta, DiscardPile& _dp) : player1(_p1), player2(_p2), deck(_deck), tradeArea(_ta), discardPile(_dp){}
-    Table(std::istream&, CardFactory*);//TODO
+    Table(std::istream&, CardFactory*);
     bool win(std::string&);
     void print(std::ostream&) const;//this one is for putting into file
     

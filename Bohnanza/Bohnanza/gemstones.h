@@ -19,7 +19,7 @@ public:
     void operator=(const Card&) = delete;
     virtual int getCardsPerCoin(int coins) = 0;
     virtual string getName() const = 0;
-    virtual void print(const ostream& out) const = 0;
+    virtual void print(ostream& out) const = 0;
     virtual ~Card(){};
 };
 
@@ -34,7 +34,7 @@ class Quartz: public Card {
 public:
     int getCardsPerCoin(int coins) override;
     string getName() const override;
-    void print(const ostream& out) const override;
+    void print(ostream& out) const override;
     
 };
 
@@ -43,7 +43,7 @@ class Hematite: public Card {
 public:
     int getCardsPerCoin(int coins) override;
     string getName() const override;
-    void print(const ostream& out) const override;
+    void print(ostream& out) const override;
     
 };
 
@@ -52,7 +52,7 @@ class Obsidian: public Card {
 public:
     int getCardsPerCoin(int coins) override;
     string getName() const override;
-    void print(const ostream& out) const override;
+    void print(ostream& out) const override;
     
 };
 
@@ -61,7 +61,7 @@ class Malachite: public Card {
 public:
     int getCardsPerCoin(int coins) override;
     string getName() const override;
-    void print(const ostream& out) const override;
+    void print(ostream& out) const override;
     
 };
 
@@ -70,7 +70,7 @@ class Turquoise: public Card {
 public:
     int getCardsPerCoin(int coins) override;
     string getName() const override;
-    void print(const ostream& out) const override;
+    void print(ostream& out) const override;
     
 };
 
@@ -79,7 +79,7 @@ class Ruby: public Card {
 public:
     int getCardsPerCoin(int coins) override;
     string getName() const override;
-    void print(const ostream& out) const override;
+    void print(ostream& out) const override;
     
 };
 
@@ -88,7 +88,7 @@ class Amethyst: public Card {
 public:
     int getCardsPerCoin(int coins) override;
     string getName() const override;
-    void print(const ostream& out) const override;
+    void print(ostream& out) const override;
     
 };
 
@@ -97,7 +97,7 @@ class Emerald: public Card {
 public:
     int getCardsPerCoin(int coins) override;
     string getName() const override;
-    void print(const ostream& out) const override;
+    void print(ostream& out) const override;
     
 };
 

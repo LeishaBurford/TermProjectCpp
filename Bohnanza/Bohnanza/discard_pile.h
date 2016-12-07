@@ -13,11 +13,12 @@ DiscardPile from file.
 
 class DiscardPile {
     friend ostream &operator<<(ostream& out, const DiscardPile& discardPile);
-    void print( std::ostream& ) const;
+    
 public:
+    void print( std::ostream& ) const;
+    std::vector<Card*> pile;
     DiscardPile() = default;
     DiscardPile( std::istream&, CardFactory* ); //TODO
-    std::vector<Card*> pile;
     DiscardPile& operator+=( Card* );
     Card* pickUp();
     Card* top();    //maybe make private?

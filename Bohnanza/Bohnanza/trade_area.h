@@ -10,7 +10,7 @@ class TradeArea {
 public:
     std::list<Card*>& getTradeArea(){return _tradeArea;}
     TradeArea() = default;
-    TradeArea( std::istream&, CardFactory* ); //TODO
+    TradeArea( std::istream&, CardFactory* );
     TradeArea& operator+=( Card* );
     void print(const ostream& out) const;
     bool legal( Card* );

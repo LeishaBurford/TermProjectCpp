@@ -1,11 +1,11 @@
 
-#ifndef cardfactory_h
-#define cardfactory_h
 
+#ifndef cardFactory_H
+#define cardFactory_H
 #include <vector>
 #include "deck.h"
 
-//class Deck;
+class Deck;
 /*
  we need a public method in CardFactory to obtain a pointer to an object of the correct subclass of Card. This has been left out on purpose but here you need to add a public method to the CardFactory.
  */
@@ -15,17 +15,15 @@ public:
     static CardFactory* getFactory();
     Deck getDeck();
     ~CardFactory(){
-        for(auto card : deck){
-            delete card;
-        }
+        //delete deck;
     }
+    Card* getCard(char);
 private:
-    Deck deck;
+    Deck* deck;
     //std::vector<Card*> deck;
     CardFactory();
     CardFactory(const CardFactory&) = delete;
-    // I am just doing a practice test for changing through git 
 
 };
 
-#endif /* cardfactory_h */
+#endif /* CARDFACTORY_H */
