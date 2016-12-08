@@ -11,6 +11,9 @@ class Chain_Base {
 public:
     virtual int sell() = 0;
     virtual Chain_Base& operator+=(Card*) =0;
+    //virtual Chain_Base& operator=(Chain_Base const&) ;
+    virtual Chain_Base& makeChain(std::string) = 0 ;
+    //virtual std::vector<Card*>  gettheChain()  ;
     std::vector<Card*> chain;
     
 };
@@ -29,6 +32,10 @@ public:
         }
     };
     
+//      std::vector<Card*> gettheChain() const{
+//        return chain ;
+//    }
+    
     // adds a card to the Chain.
     Chain<T>& operator+=(Card* card) {
         if(typeid(T) != typeid(*(dynamic_cast<T*>(card)))){
@@ -37,6 +44,11 @@ public:
         chain.push_back(card);
         return *this;
     }
+    
+//     Chain_Base& operator=(Chain_Base const& chainIn) {
+//        chain = chainIn.getChain() ;
+//         return *this ; 
+//    }
     
     //counts the number cards in the current chain and returns the number coins according to the function Card::getCardsPerCoin.
     int sell() {
@@ -50,7 +62,7 @@ public:
         
         return 0;
     }
-    Chain_Base& makeChain(std::string cardName) {
+      Chain_Base& makeChain(std::string cardName) {
         Chain_Base* newChain;
         if(cardName == "Quartz"){
             newChain = new Chain<Quartz>();

@@ -32,10 +32,18 @@ int Player::getMaxNumChains() {
 int Player::getNumChains() {
     return activeChains;
 }
+//Incements the number of added chains
+void Player::incrNumChains(){
+    ++activeChains;
+}
 
 //get the number of coins currently held by the player
 int Player::getNumCoins() {
     return numCoins;
+}
+
+int Player::sizeofChainArray(){
+    return (int)chains.size();
 }
 
 //add a number of coins

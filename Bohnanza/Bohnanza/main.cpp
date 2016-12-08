@@ -139,8 +139,8 @@ int main() {
                 //for each card in tradeArea
                 for(auto card: temp){
                     std::string chainOrDiscard;
-                    std::cout << "Card to chain or discard: " << card->getName() << "\ndiscard or chain? (d/c): ";
-                    
+                    std::cout << "Card to chain or discard : " << card->getName() << "\ndiscard or chain? (d/c): ";
+                    // *** Should also be able to add to hand ***
                     std::cin >> chainOrDiscard;
                     std::string responsesDC("cCdD");
                     checkValidInput(chainOrDiscard, responsesDC);
@@ -154,13 +154,74 @@ int main() {
                             player[chainToAdd]+=card;
                         } else {    //-------not working
                             //if room for another chain
+                             std::cout << "num chains "<<player.getNumChains()<<std::endl;
+                            
                             if(player.getNumChains() < player.getMaxNumChains()){
+                                player.incrNumChains(); // increments the number of chains
+                                 std::cout << "chain arrays size: "<<player.sizeofChainArray()<< std::endl;
+                                
                                 //make chain --line below causes errors
-                                //player[player.getNumChains()]->makeChain(card->getName());
+                                
+                                Chain<Ruby> derived ; // Chain instance to access make chain method 
+                                Chain_Base& newChain = derived.makeChain(card->getName()) ;
+       /*                         if(Chain<Ruby> *j = dynamic_cast<Chain<Ruby>*>(&newChain))
+                                    std::cout << "Ruby!" << std::endl ;
+                                else if (Chain<Quartz> *j = dynamic_cast<Chain<Quartz>*>(&newChain))
+                                    std::cout << "Quartz!" << std::endl  ;
+                                else if (Chain<Hematite> *j = dynamic_cast<Chain<Hematite>*>(&newChain))
+                                    std::cout << "Hematite!" << std::endl  ;
+                                else if (Chain<Obsidian> *j = dynamic_cast<Chain<Obsidian>*>(&newChain))
+                                    std::cout << "Obsidian!" << std::endl  ;*/
+                                
+                                
+                                std::cout << "num chains "<<player.getNumChains()<<std::endl;
+                                std::cout << "Card->getName() :"<<card->getName() << std::endl ; 
+                               // player[player.getNumChains()-1] = newChain ;
+                                if(Chain<Ruby> *j = dynamic_cast<Chain<Ruby>*>(&player[player.getNumChains()-1]))
+                                    std::cout << "Ruby!" << std::endl ;
+                                else if (Chain<Quartz> *j = dynamic_cast<Chain<Quartz>*>(&player[player.getNumChains()-1]))
+                                    std::cout << "Quartz!" << std::endl  ;
+                                else if (Chain<Hematite> *j = dynamic_cast<Chain<Hematite>*>(&player[player.getNumChains()-1]))
+                                    std::cout << "Hematite!" << std::endl  ;
+                                else if (Chain<Obsidian> *j = dynamic_cast<Chain<Obsidian>*>(&player[player.getNumChains()-1]))
+                                    std::cout << "Obsidian!" << std::endl  ;
+                                
+                               // std::cout << newChain.getChain() << std::endl ;
+                                
+                                //std::vector<Card*> vect = player[player.getNumChains()-1].getChain()  ;
+                                //std::cout << vect.size() << std::endl ;
+                                
+//                                for( auto i = vect.begin(); i !=vect.end(); ++i){
+//                                    std::cout << "hey: " ; 
+//                                    std::cout << *i << ", " << std::endl ;
+//                                }
+                                
+                                
+                                
+                                
+                                
+                                //std::cout << *(player[player.getNumChains()-1].getChain().back()) << std::endl ;
+                                
+                                
+                                
+                                
+                                
+                                std::cout << "here" << std::endl ; 
+                                
+                               // derived = dynamic_cast<Chain<Ruby>*>(player[player.getNumChains()-1]);
+                                
+                                //std::cout << player[player.getNumChains()-1] << std::endl;
+                                
+                                
+                                
+                               
+                                
+                                //->makeChain(card->getName());
                                 //add card
-                                player[player.getNumChains() - 1]+=card;
+                                //player[player.getNumChains() - 1]+=card;
                             }else{
                                 //tie and sell a chain
+                                
                             }
                         }
                         
@@ -173,7 +234,11 @@ int main() {
                     
                 }
             }
+            
             //play top most card from hand
+            
+            
+            
             //card must be added to chain of same stones
             //If chain is ended, cards for chain are removed and player receives coin(s).
             //If player decides to
