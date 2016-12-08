@@ -164,19 +164,33 @@ int main() {
                                 
                                 Chain<Ruby> derived ; // Chain instance to access make chain method 
                                 Chain_Base& newChain = derived.makeChain(card->getName()) ;
-       /*                         if(Chain<Ruby> *j = dynamic_cast<Chain<Ruby>*>(&newChain))
+                                if(Chain<Ruby> *j = dynamic_cast<Chain<Ruby>*>(&newChain))
                                     std::cout << "Ruby!" << std::endl ;
                                 else if (Chain<Quartz> *j = dynamic_cast<Chain<Quartz>*>(&newChain))
                                     std::cout << "Quartz!" << std::endl  ;
                                 else if (Chain<Hematite> *j = dynamic_cast<Chain<Hematite>*>(&newChain))
                                     std::cout << "Hematite!" << std::endl  ;
                                 else if (Chain<Obsidian> *j = dynamic_cast<Chain<Obsidian>*>(&newChain))
-                                    std::cout << "Obsidian!" << std::endl  ;*/
+                                    std::cout << "Obsidian!" << std::endl  ;
                                 
                                 
                                 std::cout << "num chains "<<player.getNumChains()<<std::endl;
                                 std::cout << "Card->getName() :"<<card->getName() << std::endl ; 
                                // player[player.getNumChains()-1] = newChain ;
+                                Chain_Base* test = player.getChainBasePir(player.getNumChains()-1) ;
+                                *test = newChain ;
+                                *test+=(card) ;
+                                
+                                //test = &newChain ;
+                                if(Chain<Ruby> *j = dynamic_cast<Chain<Ruby>*>(test))
+                                    std::cout << "Ruby!" << std::endl ;
+                                else if (Chain<Quartz> *j = dynamic_cast<Chain<Quartz>*>(test))
+                                    std::cout << "Quartz!" << std::endl  ;
+                                else if (Chain<Hematite> *j = dynamic_cast<Chain<Hematite>*>(test))
+                                    std::cout << "Hematite!" << std::endl  ;
+                                else if (Chain<Obsidian> *j = dynamic_cast<Chain<Obsidian>*>(test))
+                                    std::cout << "Obsidian!" << std::endl  ;
+                                
                                 if(Chain<Ruby> *j = dynamic_cast<Chain<Ruby>*>(&player[player.getNumChains()-1]))
                                     std::cout << "Ruby!" << std::endl ;
                                 else if (Chain<Quartz> *j = dynamic_cast<Chain<Quartz>*>(&player[player.getNumChains()-1]))
@@ -221,6 +235,7 @@ int main() {
                                 //player[player.getNumChains() - 1]+=card;
                             }else{
                                 //tie and sell a chain
+                                
                                 
                             }
                         }

@@ -14,6 +14,7 @@ class Player {
     Chain_Base& getChain(int i){return *(chains.at(i));}
     const Chain_Base& getChain(int i) const {return *(chains.at(i));}
     
+    
     std::string name;
     int numCoins;
     int maxChains;
@@ -43,6 +44,8 @@ public:
      const Chain_Base& operator[](int i) const {
         return getChain(i);
     };
+    Chain_Base* getChainBasePir(int i){return chains.at(i); };
+    
     void buyThirdChain();
     void printHand(std::ostream&, bool);
    
